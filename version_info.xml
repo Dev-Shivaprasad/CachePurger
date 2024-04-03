@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<assembly xmlns="urn:schemas-microsoft-com:asm.v1" manifestVersion="1.0">
+    <assemblyIdentity version="1.0.0.0" processorArchitecture="X86" name="MyApplication.app" type="win32"/>
+    <description>Your application description here</description>
+    <!-- Additional elements -->
+    <data>
+        <COMPANY_NAME>CYBER-GEEK</COMPANY_NAME>
+        <FILE_DESCRIPTION>Clear's cache and DNS and temporary_files</FILE_DESCRIPTION>
+        <PRODUCT_NAME>CachePurgeMaster</PRODUCT_NAME>
+        <PRODUCT_VERSION>1.0.0</PRODUCT_VERSION>
+        <FILE_VERSION>1.0.0</FILE_VERSION>
+        <ORIGINAL_FILENAME>CachePurgeMaste.exe</ORIGINAL_FILENAME>
+        <INTERNAL_NAME>CachePurgeMaste</INTERNAL_NAME>
+        <LEGAL_COPYRIGHT>Copyright © CYBER-GEEK</LEGAL_COPYRIGHT>
+        <AUTHOR>Shivaprasad Gaikwad(SHIVA)</AUTHOR>
+    </data>
+</assembly>
