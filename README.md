@@ -3,4 +3,4 @@
 
 ## Download the executable file and pin it to the taskbar for easy access. Run it when needed.
 
-Link : [CachePurger]()
+Link : [CachePurger](https://github.com/Dev-ShivaPrasad/CachePurger/releases/download/v1.0/CachePurge.exe)
