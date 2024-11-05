@@ -1,6 +1,7 @@
 import os
 import time
 import shutil as rm
+from platform import system
 import os.path as opt
 # /----------------------------------------------------------------------------
 
@@ -104,8 +105,11 @@ def Delete_Prefetch():
 
 if __name__ == "__main__":
 
-    FlushDNS()
-    Delete_Prefetch()
-    Delete_Temp()
-    Delete_Temp2()
-    PrintFooter("shivaprasad. m. g", 30)
+    if system() == "Windows":
+        FlushDNS()
+        Delete_Prefetch()
+        Delete_Temp()
+        Delete_Temp2()
+        PrintFooter("shivaprasad. m. g", 30)
+    else:
+        print("\033[31mNOT RUNNING WINDOWS\033[0m")
