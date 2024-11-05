@@ -2,31 +2,39 @@ import os
 import time
 import shutil as rm
 import os.path as opt
-
 # /----------------------------------------------------------------------------
-
-
-def iife(fx):
-    def exe():
-        fx()
-    return exe()
 
 
 def PrintName(text: str):
-    print("\n" + "-"*10 + text + "-"*10 + "\n")
+    print("\n" + "\033[34m-"*10 + text + "-"*10 + "\033[0m" + "\n")
+
+
+def PrintException(e: Exception):
+    print(f"\033[31mcannot delete : \033[0m \n\t {e}\n")
+
+
+def PrintSuccess(Path: str):
+    print(f"\033[32mdeleted : \033[0m \t \033[33m{Path}\033[0m \n")
+
+
+def PrintFooter(name: str, sleeptimer: int):
+    print("\033[35m-"*50)
+    print("\t" + f"App Created By : \033[32m{name.title()}\033[0m")
+    print("\033[35m-"*50)
+    print(f"window will close in {sleeptimer} seconds \033[0m")
+    time.sleep(sleeptimer)
+
 
 # /----------------------------------------------------------------------------
-
 
 # R"C:\Users\user_pc_name~1\AppData\Local\Temp"
 path_Temp = opt.expanduser("~\AppData\Local\Temp")
-path_Temp1 = R"C:\Windows\Temp"
-path_Prefetch = R"C:\Windows\Prefetch"
+path_Temp1 = r"C:\Windows\Temp"
+path_Prefetch = r"C:\Windows\Prefetch"
 
 # /----------------------------------------------------------------------------
 
 
-@iife
 def FlushDNS():
     os.system("ipconfig /flushdns")
     print("-"*50)
@@ -34,7 +42,6 @@ def FlushDNS():
 # /----------------------------------------------------------------------------
 
 
-@iife
 def Delete_Temp():
     TempPath = os.listdir(path_Temp)
     PrintName(f"DELETING TEMPROARY FILES FROM {path_Temp} (%temp%)")
@@ -42,19 +49,19 @@ def Delete_Temp():
 
         try:
             fpath = os.path.join(path_Temp, files)
-            rm.rmtree(fpath)
-            print(f"deleted {files} \n")
-        except Exception as e:
-            print(f"cannot delete {files} because of {e} \n")
+            if os.path.isdir(fpath):
+                rm.rmtree(fpath)
+                PrintSuccess(fpath)
+            else:
+                os.remove(fpath)
+                PrintSuccess(fpath)
 
-        try:
-            os.remove(fpath)
         except Exception as e:
-            pass
+            PrintException(e)
+
 # /----------------------------------------------------------------------------
 
 
-@iife
 def Delete_Temp2():
     TempPath2 = os.listdir(path_Temp1)
     PrintName(f"DELETING TEMPROARY FILES FROM {path_Temp1} (temp)")
@@ -62,15 +69,19 @@ def Delete_Temp2():
 
         try:
             fpath2 = os.path.join(path_Temp1, files2)
-            os.remove(fpath2)
-            print(f"deleted {files2} \n")
+            if os.path.isdir(fpath2):
+                rm.rmtree(fpath2)
+                PrintSuccess(fpath2)
+            else:
+                os.remove(fpath2)
+                PrintSuccess(fpath2)
         except Exception as e:
-            print(f"cannot delete {files2} because of {e} \n")
+            PrintException(e)
+
 
 # /----------------------------------------------------------------------------
 
 
-@iife
 def Delete_Prefetch():
     Prefetch = os.listdir(path_Prefetch)
     PrintName(f"DELETING TEMPROARY FILES FROM {path_Prefetch} (prefetch)")
@@ -78,17 +89,23 @@ def Delete_Prefetch():
 
         try:
             fpath3 = os.path.join(path_Prefetch, files3)
-            os.remove(fpath3)
-            print(f"deleted {files3} \n")
+            if os.path.isdir(fpath3):
+                rm.rmtree(fpath3)
+                PrintSuccess(fpath3)
+            else:
+                os.remove(fpath3)
+                PrintSuccess(fpath3)
         except Exception as e:
-            print(f"cannot delete {files3} because of {e} \n")
+            PrintException(e)
+
 
 # /----------------------------------------------------------------------------
 
 
-t = "SHIVA PRASAD GAIKWAD"
-print("-"*50)
-print("\t" + f"App Created By : {t}")
-print("-"*50)
-print("window will close in 30 seconds")
-time.sleep(30)
+if __name__ == "__main__":
+
+    FlushDNS()
+    Delete_Prefetch()
+    Delete_Temp()
+    Delete_Temp2()
+    PrintFooter("shivaprasad. m. g", 30)
