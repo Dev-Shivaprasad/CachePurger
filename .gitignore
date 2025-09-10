@@ -1,2 +1,10 @@
+.venv
 
-/ignore
+# nauika
+main.build
+main.dist
+main.onefile-build
+nuitka*
+main.
+
+*.exe
