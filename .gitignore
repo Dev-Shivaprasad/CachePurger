@@ -8,3 +8,4 @@ nuitka*
 main.
 
 *.exe
+CachePurgerLog.txt
