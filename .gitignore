@@ -1,5 +1,7 @@
 .venv
 
+CachePurgerLog.txt
+*.txt
 # nauika
 main.build
 main.dist
@@ -8,4 +10,3 @@ nuitka*
 main.
 
 *.exe
-CachePurgerLog.txt
